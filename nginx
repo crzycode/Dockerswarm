@@ -1,0 +1,12 @@
+// only for worker
+docker service create --name nginx-service \
+  --constraint 'node.role == worker' \
+  --publish 80:80 \
+  nginx:latest
+
+
+// with some shared path
+docker service create --name nginx-service \
+  --publish 80:80 \
+  --mount type=bind,source=/path/to/nginx/nginx.conf,target=/etc/nginx/nginx.conf \
+  nginx:latest
