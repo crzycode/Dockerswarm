@@ -10,3 +10,12 @@ docker service create --name nginx-service \
   --publish 80:80 \
   --mount type=bind,source=/path/to/nginx/nginx.conf,target=/etc/nginx/nginx.conf \
   nginx:latest
+
+// with lable
+
+docker node update --label-add role=worker <node-id>
+
+docker service create --name nginx-service \
+  --constraint 'node.labels.role == worker' \
+  --publish 8080:80 \
+  nginx:latest
