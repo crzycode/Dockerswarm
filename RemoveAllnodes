@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+
+# Get list of worker nodes
+
+WORKER_NODES=$(docker node ls --filter role=worker --format "{{.ID}}")
+
+echo $WORKER_NODES
+
+# Remove each worker node
+
+for node in $WORKER_NODES; do
+
+    docker node rm --force $node
+
+done
+
+// make this executable
+chmod +x Remove_all_nodes.sh
+
+
+// execute
+sudo ./Remove_all_nodes.sh
