@@ -1,5 +1,5 @@
 // only for worker
-docker service create --name nginx-service \
+docker service create --name nginx-service --mode global \
   --constraint 'node.role == worker' \
   --publish 80:80 \
   nginx:latest
