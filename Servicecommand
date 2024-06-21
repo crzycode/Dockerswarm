@@ -1,1 +1,3 @@
 // create service
+
+docker create service -d -p 8000:80 <image name>
