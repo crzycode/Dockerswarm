@@ -1,3 +1,8 @@
 // create service
 
 docker service create -d -p 8000:80 <image name>
+
+
+// aap 
+
+docker service create --name app-service --replicas 6 --constraint 'node.role == worker'   --publish 4004:4004 xbeastx/app
